@@ -87,7 +87,7 @@ app.get('/company', (req, res) => {
     
       conn.query("SELECT * from foods")
         .then((rows) => {
-          //console.log(rows); 
+         
           res.setHeader('Content-Type','Application/json');
           res.setHeader('Created-By', 'SR');
           res.json(rows);
@@ -117,7 +117,7 @@ app.get('/company', (req, res) => {
     
       conn.query("SELECT * from student")
         .then((rows) => {
-          //console.log(rows); 
+          
           res.setHeader('Content-Type','Application/json');
           res.setHeader('Created-By', 'SR');
           res.json(rows);
@@ -256,8 +256,7 @@ check('City').isLength({
  
  (req, res) => {
    const id =  req.params.companyid
-    //const { id, name, City } = req.body;
-   // console.log("Id: " + id);
+    
    const errors = validationResult(req);
    if (!errors.isEmpty()) {
     return res.status(400).json({
@@ -350,7 +349,7 @@ check('City').isLength({
       conn.query('INSERT INTO `company` (`COMPANY_ID`, `COMPANY_NAME`, `COMPANY_CITY`) VALUES (?, ?, ?)',
       [id, name, City])
         .then((rows) => {
-          console.log(rows); 
+           
           res.setHeader('Content-Type','Application/json');
           res.setHeader('Created-By', 'SR');
           res.json(rows);
@@ -440,7 +439,7 @@ check('City').isLength({
         if(name && City) {
           conn.query(`update company set company_name = '${name}', company_city = '${City}' where company_id = '${id}'`)
           .then((rows) => {
-            console.log(rows); 
+          
             res.setHeader('Content-Type','Application/json');
             res.setHeader('Created-By', 'SR');
             res.json(rows);
@@ -449,7 +448,7 @@ check('City').isLength({
           if(name && !City) {
             conn.query(`update company set company_name = '${name}' where company_id = '${id}'`)
             .then((rows) => {
-              console.log(rows); 
+             
               res.setHeader('Content-Type','Application/json');
               res.setHeader('Created-By', 'SR');
               res.json(rows);
@@ -458,7 +457,7 @@ check('City').isLength({
             if(City && !name) {
                 conn.query(`update company set company_city = '${City}' where company_id = '${id}'`)
                 .then((rows) => {
-                  console.log(rows); 
+                
                   res.setHeader('Content-Type','Application/json');
                   res.setHeader('Created-By', 'SR');
                   res.json(rows);
@@ -474,5 +473,5 @@ check('City').isLength({
 
 
 app.listen(port, () => {
-    console.log(` app listening at http://localhost:${port}`)
+    console.log(` Express app listening at http://localhost:${port}`)
     });
